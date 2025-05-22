@@ -17,8 +17,6 @@ const defaultBorderRadius = BorderRadius.all(Radius.circular(defaultRadius));
 
 final lightTheme = ThemeData.light().copyWith(
   scaffoldBackgroundColor: const Color(0xfff0f0f0),
-  backgroundColor: const Color(0xffdadada),
-  toggleableActiveColor: Colors.cyan,
   inputDecorationTheme: ThemeData.light().inputDecorationTheme.copyWith(
         isDense: true,
         fillColor: Colors.white,
@@ -33,11 +31,56 @@ final lightTheme = ThemeData.light().copyWith(
       ),
   iconTheme: ThemeData.light().iconTheme.copyWith(color: Colors.blue),
   textButtonTheme: TextButtonThemeData(style: _lightTextButtonStyle),
+  checkboxTheme: CheckboxThemeData(
+    fillColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+  ),
+  radioTheme: RadioThemeData(
+    fillColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+  ),
+  switchTheme: SwitchThemeData(
+    thumbColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+    trackColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+  ),
+  // colorScheme: ColorScheme(background: const Color(0xffdadada)),
 );
 
 final darkTheme = ThemeData.dark().copyWith(
-  backgroundColor: Colors.grey.shade700,
-  toggleableActiveColor: Colors.cyan,
   textSelectionTheme: ThemeData.light()
       .textSelectionTheme
       .copyWith(selectionColor: Colors.cyan.shade700),
@@ -47,6 +90,53 @@ final darkTheme = ThemeData.dark().copyWith(
   inputDecorationTheme:
       lightTheme.inputDecorationTheme.copyWith(fillColor: Colors.grey.shade800),
   textButtonTheme: TextButtonThemeData(style: _darkTextButtonStyle),
+  checkboxTheme: CheckboxThemeData(
+    fillColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+  ),
+  radioTheme: RadioThemeData(
+    fillColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+  ),
+  switchTheme: SwitchThemeData(
+    thumbColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+    trackColor:
+        MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+      if (states.contains(MaterialState.disabled)) {
+        return null;
+      }
+      if (states.contains(MaterialState.selected)) {
+        return Colors.cyan;
+      }
+      return null;
+    }),
+  ),
+  // colorScheme: ColorScheme(background: Colors.grey.shade700),
 );
 
 final _lightTextButtonStyle = ButtonStyle(

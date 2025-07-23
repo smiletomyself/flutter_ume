@@ -27,12 +27,14 @@ class UMEWidget extends StatefulWidget {
   const UMEWidget({
     Key? key,
     required this.child,
+    this.logo,
     this.enable = true,
     this.supportedLocales,
     this.localizationsDelegates = defaultLocalizationsDelegates,
   }) : super(key: key);
 
   final Widget child;
+  final Widget? logo;
   final bool enable;
   final Iterable<Locale>? supportedLocales;
   final Iterable<LocalizationsDelegate> localizationsDelegates;
@@ -180,6 +182,7 @@ class _UMEWidgetState extends State<UMEWidget> {
             type: MaterialType.transparency,
             child: _ContentPage(
               key: _contentPageKey,
+              logo: widget.logo,
               refreshChildLayout: () {
                 _replaceChild();
                 setState(() {});
@@ -198,9 +201,11 @@ class _UMEWidgetState extends State<UMEWidget> {
 }
 
 class _ContentPage extends StatefulWidget {
-  const _ContentPage({Key? key, this.refreshChildLayout}) : super(key: key);
+  const _ContentPage({Key? key, this.refreshChildLayout, this.logo})
+      : super(key: key);
 
   final VoidCallback? refreshChildLayout;
+  final Widget? logo;
 
   @override
   _ContentPageState createState() => _ContentPageState();
@@ -287,6 +292,15 @@ class _ContentPageState extends State<_ContentPage> {
           child: Image(image: _currentSelected!.iconImageProvider),
           height: 30,
           width: 30);
+    }
+    if (widget.logo != null) {
+      return AnimatedContainer(
+        duration: const Duration(milliseconds: 750),
+        curve: Curves.fastOutSlowIn,
+        decoration: FlutterLogoDecoration(),
+        constraints: BoxConstraints(maxWidth: 40, maxHeight: 40),
+        child: widget.logo,
+      );
     }
     return FlutterLogo(size: 40, colors: _showedMenu ? Colors.red : null);
   }

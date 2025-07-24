@@ -294,12 +294,9 @@ class _ContentPageState extends State<_ContentPage> {
           width: 30);
     }
     if (widget.logo != null) {
-      return AnimatedContainer(
-        duration: const Duration(milliseconds: 750),
-        curve: Curves.fastOutSlowIn,
-        decoration: FlutterLogoDecoration(),
-        constraints: BoxConstraints(maxWidth: 40, maxHeight: 40),
+      return ConstrainedBox(
         child: widget.logo,
+        constraints: BoxConstraints(maxWidth: 40, maxHeight: 40),
       );
     }
     return FlutterLogo(size: 40, colors: _showedMenu ? Colors.red : null);

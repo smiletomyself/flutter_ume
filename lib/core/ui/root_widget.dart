@@ -290,16 +290,17 @@ class _ContentPageState extends State<_ContentPage> {
     if (_currentSelected != null) {
       return Container(
           child: Image(image: _currentSelected!.iconImageProvider),
-          height: 30,
-          width: 30);
+          height: 28,
+          width: 28);
     }
     if (widget.logo != null) {
       return ConstrainedBox(
         child: widget.logo,
-        constraints: BoxConstraints(maxWidth: 40, maxHeight: 40),
+        constraints:
+            BoxConstraints(maxWidth: dotSize.width, maxHeight: dotSize.height),
       );
     }
-    return FlutterLogo(size: 40, colors: _showedMenu ? Colors.red : null);
+    return FlutterLogo(size: 30, colors: _showedMenu ? Colors.red : null);
   }
 
   @override
@@ -411,7 +412,7 @@ class _ContentPageState extends State<_ContentPage> {
                 child: Container(
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.white,
+                      color: Colors.transparent,
                       boxShadow: [
                         const BoxShadow(
                             color: Colors.black12,

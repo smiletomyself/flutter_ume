@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'binding_ambiguate.dart';
 
-const Size dotSize = Size(65.0, 65.0);
+const Size dotSize = Size(50.0, 50.0);
 
 const double margin = 10.0;
 
